@@ -8,11 +8,12 @@ let session=require('express-session');
 let db=require('./dbconfig/db-connect');
 let passport=require('passport');
 let flash=require('connect-flash');
-
-
 var indexRouter = require('./routes/index');
 let userRouter=require('./routes/user')
 var app=express();
+
+const { check, validationResult } = require('express-validator');
+var app = express();
 
 
 
@@ -38,7 +39,8 @@ app.use(function (req,res,next) {
 let expressHBS= require('express-handlebars');
 
 app.use('/', indexRouter);
-app.use('/user',userRouter)
+app.use('/user',userRouter);
+require('./config/passport');``
 
 
 // catch 404 and forward to error handler
